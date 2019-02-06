@@ -5,7 +5,54 @@
     </div>
 
     <%= select_tag(:game_type, options_for_select(['収支戦','順位戦','天鳳'],[1,2,3])) %>
-    <%= select_tag(:game_type, options_for_select(['3級以下','2級','1級','初段','二段','三段','四段','五段','六段','七段','八段','九段','十段'],[0,1,2,3,4,5,6,7,8,9,10,11,12])) %>
+    <%= select_tag(:tenhou_rank, options_for_select(['3級以下','2級','1級','初段','二段','三段','四段','五段','六段','七段','八段','九段','十段'],[0,1,2,3,4,5,6,7,8,9,10,11,12])) %>
+
+    <table>
+        <tr>
+            <td>
+                一位
+            </td>
+            <td>
+                <%= text_field_tag :score1 %>点
+            </td>
+            <td>
+                <%= text_field_tag :count1 %>回
+            </td>
+        </tr>
+        <tr>
+            <td>
+                二位
+            </td>
+            <td>
+                <%= text_field_tag :score2 %>点
+            </td>
+            <td>
+                <%= text_field_tag :count2 %>回
+            </td>
+        </tr>
+        <tr>
+            <td>
+                三位
+            </td>
+            <td>
+                <%= text_field_tag :score3 %>点
+            </td>
+            <td>
+                <%= text_field_tag :count3 %>回
+            </td>
+        </tr>
+        <tr>
+            <td>
+                四位
+            </td>
+            <td>
+                <%= text_field_tag :score4 %>点
+            </td>
+            <td>
+                <%= text_field_tag :count4 %>回
+            </td>
+        </tr>
+    </table>
 
 
 <% end %>
