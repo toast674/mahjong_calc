@@ -10,6 +10,23 @@ class ResultsController < ApplicationController
       count3 = params[:count3].to_i
       count4 = params[:count4].to_i
 
+      genten = params[:genten]
+      kaesiten = params[:kaesiten]
+      uma = params[:uma]
+      puts genten
+      puts kaesiten
+      puts uma
+      uma_split = uma.split("-")
+      uma1 = uma_split[1].to_i * 1000
+      uma2 = uma_split[0].to_i * 1000
+      uma3 = uma_split[0].to_i * -1000
+      uma4 = uma_split[1].to_i * -1000
+
+      puts uma1
+      puts uma2
+      puts uma3
+      puts uma4
+
       score_array = [score1,score2,score3,score4]
       count_array = [count1,count2,count3,count4]
       puts score_array
@@ -24,6 +41,8 @@ class ResultsController < ApplicationController
 
     #平均収支を算出するメソッド
     def get_average_income(score_array, count_array, uma, genten, kaesiten)
+      uma1 = uma.split("-")
+
 
     end
 
