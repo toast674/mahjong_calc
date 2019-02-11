@@ -14,3 +14,28 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require_tree .
+
+$(function(){
+
+    //ゲームタイプ変更時
+    $('#game_type').change(function(){
+        //順位戦の場合
+        if ($('#game_type').val() === '順位戦'){
+            $('#tenhou_rank').hide();
+            $('#uma').hide();
+            $('#genten').hide();
+            $('#kaesiten').hide();
+        } else if($('#game_type').val() === '天鳳'){
+            $('#tenhou_rank').show();
+            $('#uma').hide();
+            $('#genten').hide();
+            $('#kaesiten').hide();
+        } else if($('#game_type').val() === '収支戦'){
+            $('#tenhou_rank').hide();
+            $('#uma').show();
+            $('#genten').show();
+            $('#kaesiten').show();
+        }
+    });
+
+});
