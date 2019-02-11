@@ -23,18 +23,18 @@ $(function(){
         if ($('#game_type').val() === '順位戦'){
             $('#tenhou_rank').hide();
             $('#uma').hide();
-            $('#genten').hide();
-            $('#kaesiten').hide();
+            $('.genten').hide();
+            $('.kaesiten').hide();
         } else if($('#game_type').val() === '天鳳'){
             $('#tenhou_rank').show();
             $('#uma').hide();
-            $('#genten').hide();
-            $('#kaesiten').hide();
+            $('.genten').hide();
+            $('.kaesiten').hide();
         } else if($('#game_type').val() === '収支戦'){
             $('#tenhou_rank').hide();
             $('#uma').show();
-            $('#genten').show();
-            $('#kaesiten').show();
+            $('.genten').show();
+            $('.kaesiten').show();
         }
     });
 

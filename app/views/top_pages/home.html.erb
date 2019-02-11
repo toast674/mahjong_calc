@@ -7,8 +7,12 @@
     <%= select_tag(:game_type, options_for_select(['収支戦','順位戦','天鳳'],[1,2,3])) %>
     <%= select_tag(:tenhou_rank, options_for_select(['3級以下','2級','1級','初段','二段','三段','四段','五段','六段','七段','八段','九段','十段'],[0,1,2,3,4,5,6,7,8,9,10,11,12])) %>
     <%= select_tag(:uma, options_for_select(['5-10','5-15','10-20','10-30','20-30','20-60'],[1,2,3,4,5,6])) %>
-    <%= select_tag(:genten, options_for_select(['25000点','30000点'],[1,2])) %>万点持ち
-    <%= select_tag(:kaesiten, options_for_select(['25000点','30000点'],[0,1])) %>万点返し
+    <div class="genten">
+        <%= select_tag(:genten, options_for_select(['25000点','30000点'],[1,2])) %>万点持ち
+    </div>
+    <div class="kaesiten">
+      <%= select_tag(:kaesiten, options_for_select(['25000点','30000点'],[0,1])) %>万点返し
+    </div>
     <table>
         <tr>
             <td>
