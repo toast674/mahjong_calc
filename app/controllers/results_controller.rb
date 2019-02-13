@@ -13,6 +13,10 @@ class ResultsController < ApplicationController
       genten = params[:genten]
       kaesiten = params[:kaesiten]
       uma = params[:uma]
+      genten = genten.delete("点")
+      kaesiten = kaesiten.delete("点")
+
+
       puts genten
       puts kaesiten
       puts uma
