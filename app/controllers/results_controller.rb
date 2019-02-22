@@ -23,20 +23,15 @@ class ResultsController < ApplicationController
       kaesiten = kaesiten.delete("点")
       #原点・返し点をもとにオカを算出
       oka = (genten.to_i - kaesiten.to_i) * -4
+      puts 'オカ'
       puts oka
 
-      uma_int_array = change_uma(uma)
+      uma_int_array = get_uma(uma)
       print('以下ウマ')
       puts uma_int_array[0]
       puts uma_int_array[1]
       puts uma_int_array[2]
       puts uma_int_array[3]
-
-
-
-      puts genten
-      puts kaesiten
-      puts uma
       
       #セレクトボックスから受け取ったウマを計算できるように変換
 
@@ -53,7 +48,6 @@ class ResultsController < ApplicationController
       # puts point4
       # puts point1
 
-      puts kaesiten
 
       #メソッドに渡すためにscoreとcountを配列化する
       score_array = [score1,score2,score3,score4]
@@ -67,9 +61,22 @@ class ResultsController < ApplicationController
 
       #平均順位を算出
       @average_rank = get_average_rank(count_array, total_game_count)
+
+      #平均収支を算出
+      @average_income_point = get_average_income_point(score_array, count_array, uma_int_array, kaesiten, oka, total_game_count)
+
+      rank_rate_array = get_rank_rate(count_array, total_game_count)
+      puts '順位率配列'
+      puts rank_rate_array
+      @rank1_rate = rank_rate_array[0]
+      @rank2_rate = rank_rate_array[1]
+      @rank3_rate = rank_rate_array[2]
+      @rank4_rate = rank_rate_array[3]
+
     end
 
-    def change_uma(uma)
+    #ウマ変換method
+    def get_uma(uma)
       uma_split = uma.split("-")
       uma1 = uma_split[1].to_i * 1000
       uma2 = uma_split[0].to_i * 1000
@@ -80,21 +87,48 @@ class ResultsController < ApplicationController
       return uma_int_array
     end
 
+    #平均順位取得method
     def get_average_rank(count_array, total_game_count)
       average_rank = 
       (count_array[0].to_i*1+
       count_array[1].to_i*2+
       count_array[2].to_i*3+
       count_array[3].to_i*4).fdiv(total_game_count)
+
+      average_rank = average_rank.round(3)
       return average_rank
     end
 
 
-    #平均収支を算出するメソッド
-    def get_average_income(score_array, count_array, uma_int_array, genten, kaesiten)
-      uma1 = uma.split("-")
+    #平均収支算出method
+    def get_average_income_point(score_array, count_array, uma_int_array, kaesiten, oka, total_game_count)
+      average_income_point = 
+      ((score_array[1].to_i - kaesiten.to_i + uma_int_array[1]) * count_array[1].to_i.fdiv(100) + #各順位での平均収支算出
+      (score_array[2].to_i - kaesiten.to_i + uma_int_array[2]) * count_array[2].to_i.fdiv(100) +
+      (score_array[3].to_i - kaesiten.to_i + uma_int_array[3]) * count_array[3].to_i.fdiv(100) +
+      (score_array[0].to_i - kaesiten.to_i + uma_int_array[0] + oka.to_i ) * count_array[0].to_i.fdiv(100)).fdiv(total_game_count)
+
+      average_income_point = average_income_point.round(3)
+
+      return average_income_point
+    end
+
+    #各着順率取得method
+    def get_rank_rate(count_array, total_game_count)
+      puts 'count_array'
+      puts count_array[0]
+      puts 'total_game_count'
+      puts total_game_count
 
 
+      rank1_rate = count_array[0].to_i.fdiv(total_game_count) * 100
+      puts 'rank1_rate'
+      puts rank1_rate
+      rank2_rate = count_array[1].to_i.fdiv(total_game_count) * 100
+      rank3_rate = count_array[2].to_i.fdiv(total_game_count) * 100
+      rank4_rate = count_array[3].to_i.fdiv(total_game_count) * 100
+      rank_rate_array = [rank1_rate, rank2_rate, rank3_rate, rank4_rate]
+      return rank_rate_array
     end
 
   end

@@ -6,7 +6,7 @@
                 一位率
             </td>
             <td>
-                <%= text_field_tag :score1 %>％
+                <%= @rank1_rate %>％
             </td>
         </tr>
         <tr>
@@ -14,7 +14,7 @@
                 二位率
             </td>
             <td>
-                <%= text_field_tag :score2 %>％
+                <%= @rank2_rate %>％
             </td>
         </tr>
         <tr>
@@ -22,7 +22,7 @@
                 三位率
             </td>
             <td>
-                <%= text_field_tag :score3 %>％
+                <%= @rank3_rate %>％
             </td>
         </tr>
         <tr>
@@ -30,7 +30,7 @@
                 四位率
             </td>
             <td>
-                <%= text_field_tag :score4 %>％
+                <%= @rank4_rate %>％
             </td>
         </tr>
         <tr>
@@ -46,12 +46,12 @@
                 平均収支/1ゲーム
             </td>
             <td>
-                <%= text_field_tag :average_income %>％
+                <%= @average_income_point %>
             </td>
         </tr>
         <tr>
             <td>
-                平均獲得ポイント/1ゲーム
+                平均獲得ポイント(順位戦)/1ゲーム
             </td>
             <td>
                 <%= text_field_tag :average_point %>％
