@@ -1,16 +1,32 @@
 class ResultsController < ApplicationController
     def index
-      #点数を受け取る
-      score1 = params[:score1].to_i
-      score2 = params[:score2].to_i
-      score3 = params[:score3].to_i
-      score4 = params[:score4].to_i
 
-      #各点数の回数を受け取る
-      count1 = params[:count1].to_i
-      count2 = params[:count2].to_i
-      count3 = params[:count3].to_i
-      count4 = params[:count4].to_i
+      game_type = params[:game_type]
+      puts 'game_type'
+      puts game_type
+      #収支戦 点数を受け取る 
+      shuushisen_score1 = params[:shuushisen_score1].to_i
+      shuushisen_score2 = params[:shuushisen_score2].to_i
+      shuushisen_score3 = params[:shuushisen_score3].to_i
+      shuushisen_score4 = params[:shuushisen_score4].to_i
+
+      #収支戦 各点数の回数を受け取る
+      shuushisen_count1 = params[:shuushisen_count1].to_i
+      shuushisen_count2 = params[:shuushisen_count2].to_i
+      shuushisen_count3 = params[:shuushisen_count3].to_i
+      shuushisen_count4 = params[:shuushisen_count4].to_i
+
+      #順位戦 点数を受け取る 
+      junisen_score1 = params[:junisen_score1].to_i
+      junisen_score2 = params[:junisen_score2].to_i
+      junisen_score3 = params[:junisen_score3].to_i
+      junisen_score4 = params[:junisen_score4].to_i
+
+      #順位戦 各点数の回数を受け取る
+      junisen_count1 = params[:junisen_count1].to_i
+      junisen_count2 = params[:junisen_count2].to_i
+      junisen_count3 = params[:junisen_count3].to_i
+      junisen_count4 = params[:junisen_count4].to_i
 
       #原点・返し点をセレクトボックスから受け取る
       genten = params[:genten]
@@ -23,49 +39,31 @@ class ResultsController < ApplicationController
       kaesiten = kaesiten.delete("点")
       #原点・返し点をもとにオカを算出
       oka = (genten.to_i - kaesiten.to_i) * -4
-      puts 'オカ'
-      puts oka
 
       uma_int_array = get_uma(uma)
-      print('以下ウマ')
-      puts uma_int_array[0]
-      puts uma_int_array[1]
-      puts uma_int_array[2]
-      puts uma_int_array[3]
-      
-      #セレクトボックスから受け取ったウマを計算できるように変換
-
-
-      #ポイントを算出
-      #method化する
-      # point2 = (score2 - kaesiten.to_i + uma2).fdiv(1000)
-      # point3 = (score3 - kaesiten.to_i + uma3).fdiv(1000)
-      # point4 = (score4 - kaesiten.to_i + uma4).fdiv(1000)
-      # point1 = (point2 + point3 + point4) * -1
-
-      # puts point2
-      # puts point3
-      # puts point4
-      # puts point1
-
 
       #メソッドに渡すためにscoreとcountを配列化する
-      score_array = [score1,score2,score3,score4]
-      count_array = [count1,count2,count3,count4]
+      shuushisen_score_array = [shuushisen_score1,shuushisen_score2,shuushisen_score3,shuushisen_score4]
+      shuushisen_count_array = [shuushisen_count1,shuushisen_count2,shuushisen_count3,shuushisen_count4]
 
+      junisen_score_array = [junisen_score1,junisen_score2,junisen_score3,junisen_score4]
+      junisen_count_array = [junisen_count1,junisen_count2,junisen_count3,junisen_count4]
 
       #トータルゲーム数
-      total_game_count = count1+count2+count3+count4
+      shuushisen_total_game_count = shuushisen_count1+shuushisen_count2+shuushisen_count3+shuushisen_count4
+      junisen_total_game_count = junisen_count1+junisen_count2+junisen_count3+junisen_count4
       print('totalgame数')
-      puts total_game_count
+      puts shuushisen_total_game_count
 
       #平均順位を算出
-      @average_rank = get_average_rank(count_array, total_game_count)
+      @average_rank = get_average_rank(shuushisen_count_array, shuushisen_total_game_count)
 
       #平均収支を算出
-      @average_income_point = get_average_income_point(score_array, count_array, uma_int_array, kaesiten, oka, total_game_count)
+      @average_income_point = get_average_income_point(shuushisen_score_array, shuushisen_count_array, uma_int_array, kaesiten, oka, shuushisen_total_game_count)
 
-      rank_rate_array = get_rank_rate(count_array, total_game_count)
+      @average_point = get_average_point(junisen_score_array, junisen_count_array, junisen_total_game_count)
+
+      rank_rate_array = get_rank_rate(shuushisen_count_array, shuushisen_total_game_count)
       puts '順位率配列'
       puts rank_rate_array
       @rank1_rate = rank_rate_array[0]
@@ -113,23 +111,36 @@ class ResultsController < ApplicationController
       return average_income_point
     end
 
+    #順位戦平均獲得ポイント算出method
+    def get_average_point(junisen_score_array, junisen_count_array, junisen_total_game_count)
+      avarage_point = 
+      ((junisen_score_array[0] * junisen_count_array[0]) + 
+      (junisen_score_array[1] * junisen_count_array[1]) + 
+      (junisen_score_array[2] * junisen_count_array[2]) + 
+      (junisen_score_array[3] * junisen_count_array[3])).fdiv(junisen_total_game_count)
+
+      avarage_point = avarage_point.round(3)
+      return avarage_point
+
+    end
+
     #各着順率取得method
     def get_rank_rate(count_array, total_game_count)
-      puts 'count_array'
-      puts count_array[0]
-      puts 'total_game_count'
-      puts total_game_count
-
-
-      rank1_rate = count_array[0].to_i.fdiv(total_game_count) * 100
-      puts 'rank1_rate'
-      puts rank1_rate
+      rank1_rate = count_array[0].to_i.fdiv(total_game_count) * 100 
       rank2_rate = count_array[1].to_i.fdiv(total_game_count) * 100
       rank3_rate = count_array[2].to_i.fdiv(total_game_count) * 100
       rank4_rate = count_array[3].to_i.fdiv(total_game_count) * 100
+
+      rank1_rate = rank1_rate.round(3)
+      rank2_rate = rank2_rate.round(3)
+      rank3_rate = rank3_rate.round(3)
+      rank4_rate = rank4_rate.round(3)
+
       rank_rate_array = [rank1_rate, rank2_rate, rank3_rate, rank4_rate]
       return rank_rate_array
     end
+
+
 
   end
   

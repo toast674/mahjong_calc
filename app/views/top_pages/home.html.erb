@@ -13,52 +13,142 @@
     <div class="kaesiten">
       <%= select_tag(:kaesiten, options_for_select(['25000点','30000点'],[0,1])) %>万点返し
     </div>
-    <table>
-        <tr>
-            <td>
-                一位
-            </td>
-            <td>
-                <%= text_field_tag :score1 %>点
-            </td>
-            <td>
-                <%= text_field_tag :count1 %>回
-            </td>
-        </tr>
-        <tr>
-            <td>
-                二位
-            </td>
-            <td>
-                <%= text_field_tag :score2 %>点
-            </td>
-            <td>
-                <%= text_field_tag :count2 %>回
-            </td>
-        </tr>
-        <tr>
-            <td>
-                三位
-            </td>
-            <td>
-                <%= text_field_tag :score3 %>点
-            </td>
-            <td>
-                <%= text_field_tag :count3 %>回
-            </td>
-        </tr>
-        <tr>
-            <td>
-                四位
-            </td>
-            <td>
-                <%= text_field_tag :score4 %>点
-            </td>
-            <td>
-                <%= text_field_tag :count4 %>回
-            </td>
-        </tr>
-    </table>
+
+    <div id="shuushisen"><!-- 収支戦の場合 -->
+        <table>
+            <tr>
+                <td>
+                    一位
+                </td>
+                <td>
+                    <%= text_field_tag :shuushisen_score1 %>点
+                </td>
+                <td>
+                    <%= text_field_tag :shuushisen_count1 %>回
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    二位
+                </td>
+                <td>
+                    <%= text_field_tag :shuushisen_score2 %>点
+                </td>
+                <td>
+                    <%= text_field_tag :shuushisen_count2 %>回
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    三位
+                </td>
+                <td>
+                    <%= text_field_tag :shuushisen_score3 %>点
+                </td>
+                <td>
+                    <%= text_field_tag :shuushisen_count3 %>回
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    四位
+                </td>
+                <td>
+                    <%= text_field_tag :shuushisen_score4 %>点
+                </td>
+                <td>
+                    <%= text_field_tag :shuushisen_count4 %>回
+                </td>
+            </tr>
+        </table>
+    </div>
+
+
+    <div id="junisen"><!-- 順位戦の場合 -->
+        <table>
+            <tr>
+                <td>
+                    一位
+                </td>
+                <td>
+                    <%= text_field_tag :junisen_score1 %>ポイント
+                </td>
+                <td>
+                    <%= text_field_tag :junisen_count1 %>回
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    二位
+                </td>
+                <td>
+                    <%= text_field_tag :junisen_score2 %>ポイント
+                </td>
+                <td>
+                    <%= text_field_tag :junisen_count2 %>回
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    三位
+                </td>
+                <td>
+                    <%= text_field_tag :junisen_score3 %>ポイント
+                </td>
+                <td>
+                    <%= text_field_tag :junisen_count3 %>回
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    四位
+                </td>
+                <td>
+                    <%= text_field_tag :junisen_score4 %>ポイント
+                </td>
+                <td>
+                    <%= text_field_tag :junisen_count4 %>回
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="tenhou"><!-- 天鳳の場合 -->
+        <table>
+            <tr>
+                <td>
+                    一位
+                </td>
+                <td>
+                    <%= text_field_tag :tenhou_count1 %>回
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    二位
+                </td>
+                <td>
+                    <%= text_field_tag :tenhou_count2 %>回
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    三位
+                </td>
+                <td>
+                    <%= text_field_tag :tenhou_count3 %>回
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    四位
+                </td>
+                <td>
+                    <%= text_field_tag :tenhou_count4 %>回
+                </td>
+            </tr>
+        </table>
+    </div>
 
     <%= submit_tag('送信') %>
 
