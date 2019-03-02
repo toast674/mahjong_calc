@@ -18,8 +18,6 @@
 $(function(){
 
     //初期表示は収支戦
-    $('#tenhou_rank').hide();
-    $('#tenhou').hide();
     $('#junisen').hide();
     $('#shuushisen').show();
 
@@ -27,12 +25,10 @@ $(function(){
     $('#game_type').change(function(){
         //順位戦の場合
         if ($('#game_type').val() === '順位戦'){
-            $('#tenhou_rank').hide();
             $('#uma').hide();
             $('.genten').hide();
             $('.kaesiten').hide();
             $('#shuushisen').hide();
-            $('#tenhou').hide();
             $('#junisen').show();
 
             $("#shuushisen_score1").prop("disabled", true);
@@ -53,38 +49,10 @@ $(function(){
             $("#tenhou_count3").prop("disabled", true);
             $("#tenhou_count4").prop("disabled", true);
 
-        } else if($('#game_type').val() === '天鳳'){
-            $('#tenhou_rank').show();
-            $('#uma').hide();
-            $('.genten').hide();
-            $('.kaesiten').hide();
-            $('#shuushisen').hide();
-            $('#junisen').hide();
-            $('#tenhou').show();
-
-            $("#shuushisen_score1").prop("disabled", true);
-            $("#shuushisen_score2").prop("disabled", true);
-            $("#shuushisen_score3").prop("disabled", true);
-            $("#shuushisen_score4").prop("disabled", true);
-            $("#shuushisen_count1").prop("disabled", true);
-            $("#shuushisen_count2").prop("disabled", true);
-            $("#shuushisen_count3").prop("disabled", true);
-            $("#shuushisen_count4").prop("disabled", true);
-
-            $("#junisen_score1").prop("disabled", true);
-            $("#junisen_score2").prop("disabled", true);
-            $("#junisen_score3").prop("disabled", true);
-            $("#junisen_score4").prop("disabled", true);
-            $("#junisen_count1").prop("disabled", true);
-            $("#junisen_count2").prop("disabled", true);
-            $("#junisen_count3").prop("disabled", true);
-            $("#junisen_count4").prop("disabled", true);
-        } else if($('#game_type').val() === '収支戦'){
-            $('#tenhou_rank').hide();
+        } else {
             $('#uma').show();
             $('.genten').show();
             $('.kaesiten').show();
-            $('#tenhou').hide();
             $('#junisen').hide();
             $('#shuushisen').show();
         }
