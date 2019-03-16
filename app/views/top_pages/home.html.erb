@@ -1,16 +1,18 @@
 
 <%= form_with(local: true, url: "/result") do |form| %>
     <div class="title">
-        <h1>麻雀計算ツール1</h1>
+        <h1>麻雀成績計算ツール</h1>
     </div>
 
     <%= select_tag(:game_type, options_for_select(['収支戦','順位戦'],[1,2])) %>
-    <%= select_tag(:uma, options_for_select(['5-10','5-15','10-20','10-30','20-30','20-60'],[1,2,3,4,5,6])) %>
+    <div calss="uma">
+        <%= select_tag(:uma, options_for_select(['5-10','5-15','10-20','10-30','20-30','20-60'],[1,2,3,4,5,6])) %>
+    </div>
     <div class="genten">
         <%= select_tag(:genten, options_for_select(['25000点','30000点'],[1,2])) %>万点持ち
     </div>
     <div class="kaesiten">
-      <%= select_tag(:kaesiten, options_for_select(['30000点','25000点'],[0,1])) %>万点返し
+        <%= select_tag(:kaesiten, options_for_select(['30000点','25000点'],[0,1])) %>万点返し
     </div>
 
     <div id="shuushisen"><!-- 収支戦の場合 -->
@@ -20,10 +22,10 @@
                     一位
                 </td>
                 <td>
-                    <%= text_field_tag :shuushisen_score1 %>点
+                    <%= text_field_tag :shuushisen_score1, nil, :required => true %>点
                 </td>
                 <td>
-                    <%= text_field_tag :shuushisen_count1 %>回
+                    <%= text_field_tag :shuushisen_count1, nil, :required => true %>回
                 </td>
             </tr>
             <tr>
@@ -31,10 +33,10 @@
                     二位
                 </td>
                 <td>
-                    <%= text_field_tag :shuushisen_score2 %>点
+                    <%= text_field_tag :shuushisen_score2, nil, :required => true %>点
                 </td>
                 <td>
-                    <%= text_field_tag :shuushisen_count2 %>回
+                    <%= text_field_tag :shuushisen_count2, nil, :required => true %>回
                 </td>
             </tr>
             <tr>
@@ -42,10 +44,10 @@
                     三位
                 </td>
                 <td>
-                    <%= text_field_tag :shuushisen_score3 %>点
+                    <%= text_field_tag :shuushisen_score3, nil, :required => true %>点
                 </td>
                 <td>
-                    <%= text_field_tag :shuushisen_count3 %>回
+                    <%= text_field_tag :shuushisen_count3, nil, :required => true %>回
                 </td>
             </tr>
             <tr>
@@ -53,10 +55,10 @@
                     四位
                 </td>
                 <td>
-                    <%= text_field_tag :shuushisen_score4 %>点
+                    <%= text_field_tag :shuushisen_score4, nil, :required => true %>点
                 </td>
                 <td>
-                    <%= text_field_tag :shuushisen_count4 %>回
+                    <%= text_field_tag :shuushisen_count4, nil, :required => true %>回
                 </td>
             </tr>
         </table>
@@ -70,10 +72,10 @@
                     一位
                 </td>
                 <td>
-                    <%= text_field_tag :junisen_score1 %>ポイント
+                    <%= text_field_tag :junisen_score1, nil, :required => true %>ポイント
                 </td>
                 <td>
-                    <%= text_field_tag :junisen_count1 %>回
+                    <%= text_field_tag :junisen_count1, nil, :required => true %>回
                 </td>
             </tr>
             <tr>
@@ -81,10 +83,10 @@
                     二位
                 </td>
                 <td>
-                    <%= text_field_tag :junisen_score2 %>ポイント
+                    <%= text_field_tag :junisen_score2, nil, :required => true %>ポイント
                 </td>
                 <td>
-                    <%= text_field_tag :junisen_count2 %>回
+                    <%= text_field_tag :junisen_count2, nil, :required => true %>回
                 </td>
             </tr>
             <tr>
@@ -92,10 +94,10 @@
                     三位
                 </td>
                 <td>
-                    <%= text_field_tag :junisen_score3 %>ポイント
+                    <%= text_field_tag :junisen_score3, nil, :required => true %>ポイント
                 </td>
                 <td>
-                    <%= text_field_tag :junisen_count3 %>回
+                    <%= text_field_tag :junisen_count3, nil, :required => true %>回
                 </td>
             </tr>
             <tr>
@@ -103,16 +105,16 @@
                     四位
                 </td>
                 <td>
-                    <%= text_field_tag :junisen_score4 %>ポイント
+                    <%= text_field_tag :junisen_score4, nil, :required => true %>ポイント
                 </td>
                 <td>
-                    <%= text_field_tag :junisen_count4 %>回
+                    <%= text_field_tag :junisen_count4, nil, :required => true %>回
                 </td>
             </tr>
         </table>
     </div>
 
-    <%= submit_tag('送信') %>
+    <%= submit_tag '送信' , :class => "btn btn-primary" %>
 
 
 <% end %>

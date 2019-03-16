@@ -96,9 +96,6 @@ class ResultsController < ApplicationController
       #平均順位を算出
       @average_rank = get_average_rank(junisen_count_array, junisen_total_game_count)
 
-      #平均収支を算出
-      @average_income_point = get_average_income_point(junisen_score_array, junisen_count_array, uma_int_array, kaesiten, oka, junisen_total_game_count)
-
       @average_point = get_average_point(junisen_score_array, junisen_count_array, junisen_total_game_count)
 
       rank_rate_array = get_rank_rate(junisen_count_array, junisen_total_game_count)

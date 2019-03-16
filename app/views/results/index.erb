@@ -43,7 +43,7 @@
         </tr>
         <tr>
             <td>
-                平均収支/1ゲーム
+                平均収支/1ゲーム(収支戦)
             </td>
             <td>
                 <%= @average_income_point %>
@@ -52,7 +52,7 @@
         <div class="average_point_1game">
             <tr>
                 <td>
-                    平均獲得ポイント/1ゲーム
+                    平均獲得ポイント/1ゲーム(順位戦)
                 </td>
                 <td>
                     <%= @average_point %>
@@ -60,4 +60,5 @@
             </tr>
         </div>
 
+        <%= link_to '戻る', :back , :class => "btn btn-primary" %>
     </table>
