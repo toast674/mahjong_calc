@@ -4,6 +4,7 @@ class ResultsController < ApplicationController
       game_type = params[:game_type]
       puts 'game_type'
       puts game_type
+      @game_type = game_type
       if game_type == "収支戦" then
 
       #収支戦 点数を受け取る 
