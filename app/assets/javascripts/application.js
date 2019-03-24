@@ -40,22 +40,40 @@ $(function(){
             $("#shuushisen_count3").prop("disabled", true);
             $("#shuushisen_count4").prop("disabled", true);
 
-            $("#tenhou_score1").prop("disabled", true);
-            $("#tenhou_score2").prop("disabled", true);
-            $("#tenhou_score3").prop("disabled", true);
-            $("#tenhou_score4").prop("disabled", true);
-            $("#tenhou_count1").prop("disabled", true);
-            $("#tenhou_count2").prop("disabled", true);
-            $("#tenhou_count3").prop("disabled", true);
-            $("#tenhou_count4").prop("disabled", true);
-
+            //順位戦のバリデーションを設定
         } else {
             $('#uma').show();
             $('.genten').show();
             $('.kaesiten').show();
             $('#junisen').hide();
             $('#shuushisen').show();
+
+            $("#shuushisen_score1").prop("disabled", false);
+            $("#shuushisen_score2").prop("disabled", false);
+            $("#shuushisen_score3").prop("disabled", false);
+            $("#shuushisen_score4").prop("disabled", false);
+            $("#shuushisen_count1").prop("disabled", false);
+            $("#shuushisen_count2").prop("disabled", false);
+            $("#shuushisen_count3").prop("disabled", false);
+            $("#shuushisen_count4").prop("disabled", false);
+
+            //収支戦のバリデーションを設定
+            required_and_number_check_shuushisen();
         }
     });
 
 });
+
+//収支戦の数値と必須バリデーション
+function required_and_number_check_shuushisen(){
+    var flug = 0;
+
+    if($("#shuushisen_score1").val().match(/^\d+$/)){
+        flug = 1;
+    }
+
+    if(flug){
+        alert('数字以外が入力されています');
+    }
+    
+}
